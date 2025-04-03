@@ -21,7 +21,17 @@ public:
 };
 
 Fraction reduce(Fraction input) {
-    return {-1, -1}; // TODO: replace this with the real code
+    int divider = 2;
+    while (divider <= input.numerator && divider <= input.denominator) {
+        if (input.numerator % divider == 0 &&
+            input.denominator % divider == 0) {
+            input.numerator /= divider;
+            input.denominator /= divider;
+            continue;
+        }
+        divider++;
+    }
+    return input;
 }
 
 int main() {
@@ -56,9 +66,6 @@ void test() {
             std::cout << "FAIL! case is: " << input.to_string()  << std::endl;
         }
     }
-
-
-
 
 }
 
